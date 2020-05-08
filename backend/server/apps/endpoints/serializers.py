@@ -1,4 +1,4 @@
-from rest.framework import serializers
+from rest_framework import serializers
 from apps.endpoints.models import Endpoint, MLAlgorithm, MLAlgorithmStatus, MLRequest
 
 class EndpointSerializer(serializers.ModelSerializer):
@@ -20,9 +20,9 @@ class MLAlgorithmSerializer(serializers.ModelSerializer):
                             "parent_endpoint", "current_status")
         fields = read_only_fields
     
-class MlAlgorithmStatusSerializer(models.Model):
+class MLAlgorithmStatusSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MlAlgorithmStatus
+        model = MLAlgorithmStatus
         read_only_fields = ("id", "active")
         fields = ("id", "active", "status", "created_by", "created_at",
                    "parent_mlalgorithm")
